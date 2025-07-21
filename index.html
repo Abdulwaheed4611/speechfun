@@ -1,0 +1,207 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech Therapy Application</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-microphone-alt"></i> SpeechBuddy</h1>
+            <p>Making speech therapy fun and engaging for children</p>
+        </div>
+
+        <div class="main-content">
+            <!-- Authentication Section -->
+            <div id="auth-section">
+                <div class="auth-tabs">
+                    <button class="tab-button active" onclick="switchTab('login')">Login</button>
+                    <button class="tab-button" onclick="switchTab('signup')">Sign Up</button>
+                </div>
+
+                <!-- Login Form -->
+                <div id="login-tab" class="tab-content active">
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="login-username">Username</label>
+                            <input type="text" id="login-username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-role">Role</label>
+                            <select id="login-role" required>
+                                <option value="">Select Role</option>
+                                <option value="patient">Patient (Child)</option>
+                                <option value="therapist">Therapist</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn">Login</button>
+                    </form>
+                </div>
+
+                <!-- Signup Form -->
+                <div id="signup-tab" class="tab-content">
+                    <form id="signup-form">
+                        <div class="form-group">
+                            <label for="signup-username">Username</label>
+                            <input type="text" id="signup-username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-email">Email</label>
+                            <input type="email" id="signup-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-password">Password</label>
+                            <input type="password" id="signup-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-role">Role</label>
+                            <select id="signup-role" required>
+                                <option value="">Select Role</option>
+                                <option value="patient">Patient (Child)</option>
+                                <option value="therapist">Therapist</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="age-group" style="display: none;">
+                            <label for="signup-age">Age</label>
+                            <input type="number" id="signup-age" min="3" max="18">
+                        </div>
+                        <button type="submit" class="btn">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Dashboard Section -->
+            <div id="dashboard-section" class="dashboard">
+                <div class="welcome-section">
+                    <div class="user-avatar" id="user-avatar">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h2 id="welcome-message">Welcome back!</h2>
+                    <p id="user-info">Ready for some fun speech practice?</p>
+                    <button class="btn" onclick="logout()" style="max-width: 200px; margin-top: 1rem;">Logout</button>
+                </div>
+
+                <div class="modules-grid">
+                    <div class="module-card" onclick="startModule('pronunciation')">
+                        <div class="module-icon" style="background: #e74c3c;">
+                            <i class="fas fa-volume-up"></i>
+                        </div>
+                        <h3>Pronunciation</h3>
+                        <p>Practice saying words clearly and correctly</p>
+                    </div>
+
+                    <div class="module-card" onclick="startModule('sound-matching')">
+                        <div class="module-icon" style="background: #3498db;">
+                            <i class="fas fa-headphones"></i>
+                        </div>
+                        <h3>Sound Matching</h3>
+                        <p>Match sounds with pictures and words</p>
+                    </div>
+
+                    <div class="module-card" onclick="startModule('word-repetition')">
+                        <div class="module-icon" style="background: #f39c12;">
+                            <i class="fas fa-redo"></i>
+                        </div>
+                        <h3>Word Repetition</h3>
+                        <p>Repeat words to improve pronunciation</p>
+                    </div>
+
+                    <div class="module-card" onclick="startModule('sentence-building')">
+                        <div class="module-icon" style="background: #27ae60;">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        <h3>Sentence Building</h3>
+                        <p>Build sentences using word blocks</p>
+                    </div>
+
+                    <div class="module-card" onclick="viewProgress()">
+                        <div class="module-icon" style="background: #9b59b6;">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Progress Report</h3>
+                        <p>View your learning progress and achievements</p>
+                    </div>
+
+                    <div class="module-card" onclick="playFreeMode()">
+                        <div class="module-icon" style="background: #e67e22;">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3>Free Play</h3>
+                        <p>Explore words and sounds in a fun environment</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Free Play Section -->
+            <div id="free-play-section" class="free-play-area">
+                <button onclick="backToDashboard()" style="background: #95a5a6; color: white; border: none; padding: 10px 20px; border-radius: 5px; margin-bottom: 2rem; cursor: pointer;">
+                    <i class="fas fa-arrow-left"></i> Back to Dashboard
+                </button>
+                
+                <h2>Free Play Mode</h2>
+                <p>Talk to make the balls bounce! The louder you speak, the higher they bounce!</p>
+                
+                <div class="play-container" id="play-container">
+                    <!-- Balls will be dynamically generated here -->
+                    <img id="flower" src="flower.png" alt="Flower">
+                    <div class="volume-indicator">
+                        <div class="volume-bar" id="volume-bar"></div>
+                    </div>
+                </div>
+                
+                <div class="play-controls">
+                    <button class="play-btn" id="start-listening" onclick="startVoiceDetection()">
+                        <i class="fas fa-microphone"></i> Start Listening
+                    </button>
+                    <button class="play-btn" id="stop-listening" onclick="stopVoiceDetection()" style="display: none; background: #e74c3c;">
+                        <i class="fas fa-stop"></i> Stop Listening
+                    </button>
+                </div>
+                
+                <div class="play-feedback" id="play-feedback">
+                    <p>Click "Start Listening" and speak into your microphone!</p>
+                </div>
+            </div>
+
+            <!-- Exercise Section -->
+            <div id="exercise-section" class="exercise-area">
+                <button onclick="backToDashboard()" style="background: #95a5a6; color: white; border: none; padding: 10px 20px; border-radius: 5px; margin-bottom: 2rem; cursor: pointer;">
+                    <i class="fas fa-arrow-left"></i> Back to Dashboard
+                </button>
+                
+                <h2 id="exercise-title">Pronunciation Practice</h2>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                
+                <div class="word-display" id="current-word">Hello</div>
+                
+                <div class="audio-controls">
+                    <button class="audio-btn" onclick="playWord()" title="Play Word">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="audio-btn" onclick="recordSpeech()" title="Record Your Voice" style="background: #e74c3c;">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                    <button class="audio-btn" onclick="nextWord()" title="Next Word" style="background: #27ae60;">
+                        <i class="fas fa-forward"></i>
+                    </button>
+                </div>
+
+                <div id="feedback-area" style="margin-top: 2rem;">
+                    <p id="feedback-message"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

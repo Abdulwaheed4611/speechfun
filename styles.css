@@ -1,0 +1,387 @@
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #45a049;
+    --accent-color: #FF9800;
+    --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --text-dark: #2c3e50;
+    --text-light: #7f8c8d;
+    --border-radius: 15px;
+    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--background);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+}
+
+.header {
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.main-content {
+    padding: 2rem;
+}
+
+.auth-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.tab-button {
+    padding: 12px 30px;
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+}
+
+.tab-button.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus, .form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: var(--secondary-color);
+}
+
+.dashboard {
+    display: none;
+}
+
+.dashboard.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.welcome-section {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.user-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 2rem;
+    color: white;
+}
+
+.modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.module-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.module-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.module-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.exercise-area {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+}
+
+.exercise-area.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.word-display {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin: 2rem 0;
+    animation: pulse 2s infinite;
+}
+
+.audio-controls {
+    margin: 2rem 0;
+}
+
+.audio-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 10px;
+}
+
+.audio-btn:hover {
+    transform: scale(1.1);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.free-play-area {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+}
+
+.free-play-area.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.play-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(to bottom, #87CEEB 0%, #98FB98 100%);
+    border-radius: 20px;
+    margin: 2rem 0;
+    overflow: hidden;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.bouncing-ball {
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    z-index: 2; /* Ensure ball is above flower */
+}
+
+.bouncing-ball::after {
+    content: '';
+    position: absolute;
+    width: 30%; /* Relative to ball size */
+    height: 30%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    top: 20%;
+    left: 20%;
+}
+
+.volume-indicator {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 200px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.volume-bar {
+    height: 100%;
+    background: linear-gradient(to right, #4CAF50, #FFC107, #FF5722);
+    width: 0%;
+    transition: width 0.1s ease;
+    border-radius: 10px;
+}
+
+.play-controls {
+    margin: 2rem 0;
+}
+
+.play-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 10px;
+}
+
+.play-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.play-feedback {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 1rem;
+    margin-top: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .modules-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .word-display {
+        font-size: 2rem;
+    }
+}
+
+#flower {
+    position: absolute;
+    bottom: 0px; /* Position flower at the very bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px; /* Adjust size as needed */
+    height: auto;
+    z-index: 1; /* Ensure it's below the ball */
+}
